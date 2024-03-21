@@ -5,6 +5,8 @@ import java.io.*;
 import java.util.*;
 
 public class Exercise10 {
+    public static final int MAXIMUM_LINE = 60;
+
     public static void wordWrap(Scanner scan) throws FileNotFoundException {
         String s = "";
         String s2 = "";
@@ -12,12 +14,12 @@ public class Exercise10 {
         while (scan.hasNextLine()) {
             s = scan.nextLine();
             for (int i = 0; i < s.length();) {
-                if (i+60 < s.length()) {
-                    s2 = s.substring(i, i+60);
+                if (i+MAXIMUM_LINE < s.length()) {
+                    s2 = s.substring(i, i+MAXIMUM_LINE);
                 } else {
                     s2 = s.substring(i, s.length());
                 }
-                i += 60;
+                i += MAXIMUM_LINE;
                 s3 += s2 + "\n";
             }
         }
