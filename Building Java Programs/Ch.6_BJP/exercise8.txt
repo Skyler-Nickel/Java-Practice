@@ -1,0 +1,4 @@
+This is a helper
+textfile
+to run exerise8
+and check output.
