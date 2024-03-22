@@ -3,7 +3,6 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Exercise11 {
@@ -30,9 +29,6 @@ public class Exercise11 {
             }
         }
         System.out.println(s3);
-        //PrintStream output = new PrintStream(new File("exercise11.txt"));
-        //output.println(s3);
-        //output.close();
     }
 
     public static void main(String[] args) throws FileNotFoundException{

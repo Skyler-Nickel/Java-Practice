@@ -17,19 +17,31 @@ public class Exercise14 {
 
     public static void processString(String s) {
         Scanner scan = new Scanner(s);
+        String token1 = "";
+        int count = 1;
+
+        if (scan.hasNext()) {
+            token1 = scan.next();
+        }
+
         while (scan.hasNext()) {
-            String token1 = scan.next();
-            String token2 = "";
-            int count = 0;
-            if (scan.hasNext()) {
-                token2 = scan.next();
-                count++;
-            }
+            String token2 = scan.next();
             if (token1.equals(token2)) {
                 count++;
+            } else if (count > 1) {
                 System.out.print(token1 + "*" + count + " ");
+                token1 = token2;
+                count = 1;
+            } else {
+                token1 = token2;
+                count = 1;
             }
         }
+
+        if (count > 1) {
+            System.out.print(token1 + "*" + count + " ");
+        }
+        scan.close();
     }
 
     public static void main(String[] args) throws FileNotFoundException {
