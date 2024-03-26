@@ -51,6 +51,11 @@ public class StockMain {
         double profit = currentStock.getProfit(currentPrice);
         System.out.println("Net profit/loss: $" + profit);
         System.out.println();
+
+        // Test clear()
+        //currentStock.clear();
+        //System.out.println(profit);
+
         return profit;
     }
 }
