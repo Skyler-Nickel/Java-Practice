@@ -91,6 +91,8 @@ public class Point {
 
     // Returns whether this Point is collinear with the given two other Points.
     public boolean isCollinear(Point p1, Point p2) {
-        
+        double slope1 = this.slope(p1);
+        double slope2 = this.slope(p2);
+        return Math.abs(slope1 - slope2) < 0.001;
     }
 }

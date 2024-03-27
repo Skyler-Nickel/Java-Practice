@@ -32,8 +32,11 @@ public class LineMain {
         System.out.println();
 
         // Test isCollinear(Point p)
-        
-
-
+        Point p3 = new Point(1, 1);
+        Point p4 = new Point(2, 2);
+        Point p5 = new Point(3, 3);
+        Line line3 = new Line(p3, p4);
+        System.out.println(line3.isCollinear(p5));
+        System.out.println(line3.isCollinear(p1));
     }    
 }

@@ -27,15 +27,16 @@ public class RectangleMain {
         System.out.println();
 
         // Test contains(int x, int y)
-        System.out.println(rect.contains(4, 5));
+        System.out.println(rect.contains(4, 8));
         System.out.println(rect2.contains(3, 4));
         
         // Test contains(Point p)
         Point p2 = new Point(3,4);
-        Point p3 = new Point(4, 5);
+        Point p3 = new Point(4, 8);
         System.out.println(rect.contains(p2));
         System.out.println(rect2.contains(p3));
 
-        // 
+        // Test will be for union()
+        // something goes here
     }    
 }

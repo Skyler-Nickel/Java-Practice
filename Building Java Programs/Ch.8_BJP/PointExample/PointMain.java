@@ -72,6 +72,13 @@ public class PointMain {
         Point p16 = new Point(8, 9);
         System.out.println("The slope is " + p15.slope(p16));
         System.out.println();
+
+        // Test isCollinear(Point p1, Point p2)
+        Point p17 = new Point(5, 5);
+        Point p18 = new Point(6, 6);
+        Point p19 = new Point(7, 7);
+        System.out.println(p17.isCollinear(p18, p19));
+        System.out.println(p17.isCollinear(p19, p16));
     }
 
     // Test the quadrant accessor method
@@ -80,6 +87,4 @@ public class PointMain {
         System.out.println("The quadrant of " + p + ": " + quadrant);
         System.out.println();
     }
-
-
 }
