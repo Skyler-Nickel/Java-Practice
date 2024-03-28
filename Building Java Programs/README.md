@@ -79,5 +79,15 @@ Chapter 8 covers topics such as:
 Program exercises cover the above descriptions, such as creating classes and objects, and writing mutators and accessors.
 
 ## Chapter 9
-This description will be written after completion.
-Program exercises cover using 
+Chapter 9 covers topics such as:
+- Inheritance Basics (Nonprogramming Hierarchies, Extending a class, Overriding Methods)
+- Interacting with the Superclass (Calling Overridden Methods, Accessing Inherited Fields, Calling a Superclass's Constructor)
+- Polymorphism (Polymorphism mechanics, Interpreting Inheritance Code, Interpreting Complex Calls)
+- Inheritance and Design (Is-a versus Has-a relationship)
+- Interfaces (Implementing and benefits of Interfaces)
+
+Program exercises cover the above descriptions, such as using inheritance and implementing interfaces.
+
+## Chapter 10
+Chapter 10 covers topics such as:
+- will complete description after completing exercises
