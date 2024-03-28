@@ -60,8 +60,31 @@ public class Rectangle {
         return this.x <= p.x && p.x <= this.x + width && this.y <= p.y && p.y <= this.y + height;
     }
 
-    // Will finish another day
-    //public Rectangle union(Rectangle rect) {
+    // Returns a new rectangle with tighest bound box that contains both this 
+    // rectangle and given other rectangle
+    public Rectangle union(Rectangle rect) {
+        int x = Math.min(this.x, rect.getX());
+        int y = Math.min(this.y, rect.getY());
+        int width = Math.max(this.x + this.width, rect.getX() + rect.getWidth());
+        int height = Math.max(this.y + this.height, rect.getY() + rect.getHeight());
+        return new Rectangle(x, y, width-x, height-y);
+    }
 
-    //}
+    // Returns a new rectangle that represents the largest rectangular region completely
+    // contained within both this rectangle and given other rectangle. 
+    public Rectangle intersection(Rectangle rect) {
+        int x = Math.min(this.x, rect.getX());
+        int y = Math.min(this.y, rect.getY());
+        int width = Math.max(this.x + this.width, rect.getX() + rect.getWidth());
+        int height = Math.max(this.y + this.height, rect.getY() + rect.getHeight());
+        return new Rectangle(x, y, width-x, height-y);
+    }
+
+    // Returns whether the given other rectangle lies entirely within bounds of this
+    // rectangle
+    public boolean contains(Rectangle rect) {
+        return this.x < rect.getX() && this.y < rect.getY() && 
+            rect.getX() + rect.getWidth() < this.x + this.width && 
+            rect.getY() + rect.getHeight() < this.y + this.height;
+    }
 }
