@@ -91,7 +91,7 @@ Program exercises cover the above descriptions, such as using inheritance and im
 ## Chapter 10
 Chapter 10 covers topics such as:
 - ArrayList (Basic operations, Searching methods, Adding/Removing, Initializing, Wrapper Classes)
-- Comparable Interface (Natural ordering and compareTo and Implementing Comparable)
+- Comparable Interface (Natural ordering, compareTo, Implementing Comparable)
 
 Program exercises cover the above descriptions, mainly using ArrayList operations to solve problems.
 
