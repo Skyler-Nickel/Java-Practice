@@ -18,6 +18,15 @@ public class Exercise2 {
         //list.add("hamlet");
 
         System.out.println("List before swapPairs = " + list);
+        swapPairs(list);
         System.out.println("List after swapPairs = " + list);
+    }
+
+    public static void swapPairs(ArrayList<String> list) {
+        if (list.size() % 2 == 0) {
+            for (int i = 0; i < list.size(); i+=2) {
+                
+            }
+        }
     }
 }
