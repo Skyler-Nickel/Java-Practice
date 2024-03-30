@@ -19,6 +19,7 @@ public class TallyVotes2 {
             System.out.println("-----------------------");
             round++;
         }
+        input.close();;
     }
 
     // Reads a data file of voters preferences, returning a list of the resulting
