@@ -15,7 +15,7 @@ public class Exercise2 {
         list.add("not");
         list.add("to");
         list.add("be");
-        //list.add("hamlet");
+        list.add("hamlet");
 
         System.out.println("List before swapPairs = " + list);
         swapPairs(list);
@@ -25,7 +25,17 @@ public class Exercise2 {
     public static void swapPairs(ArrayList<String> list) {
         if (list.size() % 2 == 0) {
             for (int i = 0; i < list.size(); i+=2) {
-                
+                String s = list.get(i);
+                String s2 = list.get(i+1);
+                list.set(i, s2);
+                list.set(i+1, s);
+            }
+        } else {
+            for (int i = 0; i < list.size()-1; i+=2) {
+                String s = list.get(i);
+                String s2 = list.get(i+1);
+                list.set(i, s2);
+                list.set(i+1, s);
             }
         }
     }
