@@ -7,11 +7,31 @@ import java.util.*;
 
 public class Exercise18 {
     public static void main(String[] args) {
-        //ArrayList<String> list = new ArrayList<>();
-        // more will come tomorrow
+        ArrayList<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        System.out.println("List before mirror called = " + list);
+        mirror(list);
+        System.out.println("List after mirror called = " + list);
+
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.add("H");
+        list2.add("e");
+        list2.add("l");
+        list2.add("l");
+        list2.add("o");
+
+        System.out.println("List before mirror called = " + list2);
+        mirror(list2);
+        System.out.println("List after mirror called = " + list2);
     }
 
     public static void mirror(ArrayList<String> list) {
-        // more will go here tomorrow
+        for (int i = list.size()-1; i >= 0; i--) {
+            String temp = list.get(i);
+            list.add(temp);
+        }
     }
 }
