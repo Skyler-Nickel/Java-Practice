@@ -2,6 +2,8 @@
 // Write a method contains3 that accepts a list of strings as a parameter and returns true if any single
 // string occurs at least 3 times in the list, and false otherwise. Use a map as auxiliary storage
 
+// This solutions is not the optimal solution but it is helpful practice for getting use to Map
+
 import java.util.*;
 
 public class Exercise12 {
@@ -19,6 +21,24 @@ public class Exercise12 {
         if (list.size() == 0) {
             return false;
         }
-        // More will go here but taking a break
+        Map<String, Integer> map = new TreeMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i);
+            if (map.containsKey(s)) {
+                int count = map.get(s);
+                map.put(s, count + 1);
+            } else {
+                map.put(s, 1);
+            }
+        }
+
+        for (String word: map.keySet()) {
+            int count = map.get(word);
+            if (count > 2) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
