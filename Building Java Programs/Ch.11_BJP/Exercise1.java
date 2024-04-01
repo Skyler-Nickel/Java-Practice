@@ -6,5 +6,4 @@
 
 public class Exercise1 {
     // will be implemented in Sieve program
-    // more to come after chapter reading finished
 }
