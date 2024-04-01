@@ -97,4 +97,12 @@ Program exercises cover the above descriptions, mainly using ArrayList operation
 
 ## Chapter 11
 Chapter 11 covers topics such as:
-- Will include description after reading...
+- Lists (Collections, LinkedList vs. ArrayList, Iterators, ADTS (Abstract Data Types)
+- Sets (Set concepts, TreeSet vs. HashSet, Set operations)
+- Maps (Basic map operations, Viewing maps (keySet and values), TreeMap vs. HashMap)
+
+Program exercises cover the above topics, mainly using collections.
+
+## Chapter 12
+Chapter 12 covers topics such as:
+- This description will be added later...
