@@ -4,26 +4,25 @@
 // as its keys and keys from the original as its values. Since a map's values need not be unique but its 
 // keys must be, you should have each value map to a set of keys.
 
-
-// Will finish chapter tomorrow struggling to focus...
-
 import java.util.*;
 
 public class Exercise18 {
     public static void main(String[] args) {
-        Map<String, String> map1 = new TreeMap<>(Map.of("42", "Marty", "81", "Sue", "17", "Ed", "31", "Dave",
+        Map<String, String> map1 = new HashMap<>(Map.of("42", "Marty", "81", "Sue", "17", "Ed", "31", "Dave",
         "56", "Ed", "3", "Marty", "29", "Ed"));
 
-        Map<String, String> map2 = reverse(map1);
+        Map<String, Set<String>> map2 = reverse(map1);
 
         System.out.println(map2);
     }
 
-    public static Map<String, String> reverse(Map<String, String> map) {
-        Map<String, String> map2 = new TreeMap<>();
+    public static Map<String, Set<String>> reverse(Map<String, String> map) {
+        HashMap<String, Set<String>> map2 = new HashMap<>();
         for (String s: map.keySet()) {
-            String s2 = map.get(s);
-            map2.put(s2, s);
+            if (!map2.containsKey(map.get(s))) {
+                map2.put(map.get(s), new HashSet<String>() );
+            }
+            map2.get(map.get(s)).add(s);
         }
         return map2;
     }
