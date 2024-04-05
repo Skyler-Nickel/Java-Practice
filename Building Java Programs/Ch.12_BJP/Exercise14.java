@@ -8,9 +8,13 @@ public class Exercise14 {
     }
 
     public static String dedup(String s) {
-        if (s.length() == 0) {
-            return "";
+        if (s.length() < 2) {
+            return s;
         }
-        if (s.charAt(0) != s.charAt(1))
+        if (s.charAt(0) == s.charAt(1)) {
+            return dedup(s.substring(1));
+        } else {
+            return s.charAt(0) + dedup(s.substring(1));
+        }
     }
 }
