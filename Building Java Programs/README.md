@@ -105,4 +105,21 @@ Program exercises cover the above topics, mainly using collections.
 
 ## Chapter 12
 Chapter 12 covers topics such as:
-- This description will be added later...
+- Recursive Functions and Data (Integer Exponentiation, Greatest Common Divisor, Helper Methods)
+- Recursion Mechanics
+- Recursive Backtracking
+
+Program exercises cover recursive topics, mainly using integers and strings.
+
+## Chapter 13
+Chapter 13 covers topics such as:
+- Searching and Sorting using the Java Class Libraries (Binary search, Sorting, Shuffling, Comparators)
+- Program complexity (Basic concept of Big O notation)
+- Implementing Searching and Sorting Algorithms (Sequential Search, Binary Search, Recursive Bin Search, Selection Sort)
+- Merge Sort
+
+Program exercises cover topics listed above, using search/sort algos.
+
+## Chapter 14
+Chapter 14 covers topics such as:
+- More to come here...
