@@ -122,4 +122,12 @@ Program exercises cover topics listed above, using search/sort algos.
 
 ## Chapter 14
 Chapter 14 covers topics such as:
-- More to come here...
+- Stack/Queue concepts (FIFO/LIFO)
+- Stack/Queue operations (Transferring between queues and stacks, Sum of a queue, Sum of a stack)
+- Complex Stack/Queue operations (Removing values, comparing two stacks)
+
+Program exercises cover using stack/queue operations to solve problems.
+
+## Chapter 15
+Chapter 15 covers topics such as:
+- More will be added here...
