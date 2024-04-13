@@ -23,13 +23,13 @@ public class Exercise8 {
         for (int i: data2) {
             q2.add(i);
         }
-        System.out.println("The queue before isPalindrome = " + q2);
-        System.out.println(isPalindrome(q2));
-        System.out.println("The queue after isPalindrome = " + q2);
-        System.out.println();
+        //System.out.println("The queue before isPalindrome = " + q2);
+        //System.out.println(isPalindrome(q2));
+        //System.out.println("The queue after isPalindrome = " + q2);
+        //System.out.println();
 
         Queue<Integer> q3 = new LinkedList<>();
-        System.out.println(isPalindrome(q3));
+        //System.out.println(isPalindrome(q3));
     }
 
     public static boolean isPalindrome(Queue<Integer> q) {
@@ -37,11 +37,24 @@ public class Exercise8 {
             return true;
         } else {
             if (q.size() % 2 == 0) {
-            
-            Stack<Integer> s = new Stack<>();
-            for (int i = 0; )
-                
+                Stack<Integer> s = new Stack<>();
+                for (int i = 0; i < q.size()/2; i++) {
+                    s.push(q.remove());
+                }
+            } else {
+                Stack<Integer> s = new Stack<>();
+                for (int i = 0; i <= q.size()/2; i++) {
+                    s.push(q.remove());
+                }
+                System.out.println(s);
+                while (s.size() > 0) {
+                    int temp = s.pop();
+                    if (q.peek() != temp) {
+                        return false;
+                    }
+                }
             }
+            return true;
         }
     }
 }
