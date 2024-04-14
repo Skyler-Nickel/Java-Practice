@@ -130,4 +130,25 @@ Program exercises cover using stack/queue operations to solve problems.
 
 ## Chapter 15
 Chapter 15 covers topics such as:
-- More will be added here...
+- Implementing a Collection Class
+- ArrayIntList (Adding and Printing, Encapsulation, Adjusting Middle of a List, Multiple Constructors)
+- ArrayIntList (Exception Throwing and Convience Methods)
+- ArrayIntList (Resizing and Iterator)
+
+Program exercises cover implementing ArrayIntList class.
+
+## Chapter 16
+Chapter 16 covers topics such as:
+- Linked Lists
+- Working with Nodes (Constructing List, List Basics, Manipulating Nodes, Traversing)
+- Linked List Class (LinkedIntList, Appending, Adding to the Middle)
+- Complex List Operations
+- LinkedList<E> (Linked List Variations and Linked List Iterators)
+
+Program exercises cover implementing a Linked List class.
+
+## Chapter 17
+- Will include once finished...
+
+## Chapter 18
+- Will include once finished...
