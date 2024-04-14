@@ -24,6 +24,12 @@ public class ArrayIntListClient {
         int[] data17 = {4, 3, 2, 1};
         int[] data18 = {1, 3, 2, 7};
         int[] data19 = {42, 7, 0, -3, 15};
+        int[] data20 = {18, 7, 4, 24, 11};
+        int[] data21 = {1, 8, 2, 7};
+        int[] data22 = {1, 7, 3, 9, 4, 6, 5};
+        int[] data23 = {8, 23, 19, 7, 12, 4};
+        int[] data24 = {10, 25, 31, 47, 52, 68, 77};
+        int[] data25 = {5, 2, 2, -5, 4, 3, 2, 4, 1, 1, 1, 0, 2, 17};
 
 
         ArrayIntList list = new ArrayIntList();
@@ -45,6 +51,12 @@ public class ArrayIntListClient {
         ArrayIntList list17 = new ArrayIntList();
         ArrayIntList list18 = new ArrayIntList();
         ArrayIntList list19 = new ArrayIntList();
+        ArrayIntList list20 = new ArrayIntList();
+        ArrayIntList list21 = new ArrayIntList();
+        ArrayIntList list22 = new ArrayIntList();
+        ArrayIntList list23 = new ArrayIntList();
+        ArrayIntList list24 = new ArrayIntList();
+        ArrayIntList list25 = new ArrayIntList();
 
         
         addData(list, data);
@@ -65,6 +77,12 @@ public class ArrayIntListClient {
         addData(list17, data17);
         addData(list18, data18);
         addData(list19, data19);
+        addData(list20, data20);
+        addData(list21, data21);
+        addData(list22, data22);
+        addData(list23, data23);
+        addData(list24, data24);
+        addData(list25, data25);
         
         
         testLastIndexOf(list);
@@ -119,6 +137,24 @@ public class ArrayIntListClient {
 
 
         testStutter(list19);
+
+
+        testStretch(list20, 3);
+
+
+        testDoubleList(list21);
+
+
+        testCompress(list22);
+
+
+        testRotate(list23);
+
+
+        testSwitchPairs(list24);
+
+
+        testFromCounts(list25);
     }
 
     public static void addData(ArrayIntList list, int[] data) {
@@ -229,6 +265,48 @@ public class ArrayIntListClient {
         System.out.println("The List before stutter = " + list.toString());
         list.stutter();
         System.out.println("The list after stutter = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testStretch(ArrayIntList list, int n) {
+        System.out.println("The List before stretch = " + list.toString());
+        list.stretch(n);
+        System.out.println("The list after stretch = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testDoubleList(ArrayIntList list) {
+        System.out.println("The List before double = " + list.toString());
+        list.doubleList();
+        System.out.println("The list after double = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testCompress(ArrayIntList list) {
+        System.out.println("The List before compress = " + list.toString());
+        list.compress();
+        System.out.println("The list after compress = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testRotate(ArrayIntList list) {
+        System.out.println("The List before rotate = " + list.toString());
+        list.rotate();
+        System.out.println("The list after rotate = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testSwitchPairs(ArrayIntList list) {
+        System.out.println("The List before switch pairs = " + list.toString());
+        list.switchPairs();
+        System.out.println("The list after switch pairs = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testFromCounts(ArrayIntList list) {
+        System.out.println("The List before from counts = " + list.toString());
+        ArrayIntList list2 = list.fromCounts();
+        System.out.println("The new list after from counts = " + list2.toString());
         System.out.println();
     }
 }

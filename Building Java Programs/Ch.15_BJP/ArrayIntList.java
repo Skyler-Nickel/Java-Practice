@@ -396,5 +396,106 @@ public class ArrayIntList {
 
     // Exercise 17:
     // Write a method called stretch that takes an integer n as a parameter and that increases a
-    // list of integers
+    // list of integers by a factor of n by replacing each integer integer in the original list
+    // with n copies of that integer.
+    public void stretch(int n) {
+        checkCapacity(n * size);
+        int index = size;
+        int count = 0;
+        size *= n;
+        int index2 = size - 1;
+        while (index >= 0) {
+            while (count < n) {
+                if (index - 1 >= 0) {
+                    elementData[index2] = elementData[index-1];
+                }
+                index2--;
+                count++;
+            }
+            index--;
+            count = 0;
+        }
+    }
+
+    // Exercise 18:
+    // Write a method called doubleList that doubles the size of a list by appending a copy of the
+    // original sequence to the end of the list.
+    public void doubleList() {
+        checkCapacity(size * 2);
+        int index = 0;
+        int index2 = size;
+        size *= 2;
+        for (int i = index2; i < size; i++) {
+            elementData[i] = elementData[index];
+            index++;
+        }
+    }
+
+    // Exercise 19:
+    // Write a method called compress that replaces every pair of elements in the list with a single
+    // element equal to the sum of the pair.
+    public void compress() {
+        int count = 0;
+        int index = 0;
+        if (size % 2 != 0) {
+            int last = elementData[size-1];
+            for (int i = 0; i < size-1; i+=2) {
+                elementData[index] = elementData[i] + elementData[i+1];
+                count++;
+                index++;
+            }
+            size -= count;
+            elementData[size-1] = last;
+        } else {
+            for (int i = 0; i < size; i+=2) {
+                elementData[index] = elementData[i] + elementData[i+1];
+                count++;
+                index++;
+            }
+            size -= count;
+        }
+    } 
+
+    // Exercise 20:
+    // Write a method called rotate that moves the value at the front of a list of integers to
+    // the end of the list.
+    public void rotate() {
+        int first = elementData[0];
+        for (int i = 0; i < size; i++) {
+            elementData[i] = elementData[i+1];
+        }
+        elementData[size-1] = first;
+    }
+
+    // Exercise 21:
+    // Write a method called switchPairs that switches the order of values in the list in a
+    // pairwise fashion.
+    public void switchPairs() {
+        if (size % 2 != 0) {
+            for (int i = 0; i < size-1; i+=2) {
+                int temp = elementData[i];
+                elementData[i] = elementData[i+1];
+                elementData[i+1] = temp;
+            }
+        } else {
+            for (int i = 0; i < size; i+=2) {
+                int temp = elementData[i];
+                elementData[i] = elementData[i+1];
+                elementData[i+1] = temp;
+            }
+        }
+    }
+
+    // Exercise 22:
+    // Write a method called fromCounts that converts an ArrayIntList of counts into a new
+    // ArrayIntList of values that displays the previous element n(element) times
+    public ArrayIntList fromCounts() {
+        ArrayIntList list2 = new ArrayIntList();
+        for (int i = 0; i < size; i+=2) {
+            for (int j = 0; j < elementData[i]; j++) {
+                list2.add(elementData[i+1]);
+            }
+        }
+        return list2;
+    }
 }
