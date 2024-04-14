@@ -1,6 +1,8 @@
 // Chapter 15 example of implementing a collection class
 // Class ArrayIntList can be used to store a list of integers.
 
+import java.util.NoSuchElementException;
+
 public class ArrayIntList {
     private int[] elementData;      // list of integers
     private int size;               // number of elements in the list
@@ -116,6 +118,13 @@ public class ArrayIntList {
     private void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("index: " + index);
+        }
+    }
+
+    // post : throws an NoSuchElementException if no elements are in list
+    private void checkElement(int size) {
+        if (size == 0) {
+            throw new NoSuchElementException("size: " + size);
         }
     }
 
@@ -265,5 +274,127 @@ public class ArrayIntList {
     // Exercise 9:
     // Write a method called maxCount that returns the number of occurrences of the most frequently
     // occurring value in a sorted list of integers.
-    
+    public int maxCount() {
+        int max = 0;
+        int count = 1;
+        for (int i = 0; i < size; i++) {
+            if (i + 1 < size) {
+                if (elementData[i] == elementData[i+1]) {
+                    count++;
+                } else {
+                    count = 1;
+                }
+            }
+            if (count > max) {
+                max = count;
+            }
+        }
+        return max;
+    }
+
+    // Exercise 10:
+    // Write a method called longestSortedSequence that returns the length of the longest sorted 
+    // sequence within a list of integers
+    public int longestSortedSequence() {
+        int longest = 0;
+        int count = 1;
+        for (int i = 0; i < size; i++) {
+            if (i + 1 < size) {
+                if (elementData[i] <= elementData[i+1]) {
+                    count++;
+                } else {
+                    count = 1;
+                }
+            }
+            if (count > longest) {
+                longest = count;
+            }
+        }
+        return longest;
+    }
+
+    // Exercise 11:
+    // Write a method called removeLast that removes and returns the last value from a 
+    // list of integers.
+    public int removeLast() {
+        checkElement(size);
+        int element = elementData[size-1];
+        size--;
+        return element;
+    }
+
+    // Exercise 12:
+    // Write a method called remove front that takes an integer n as a parameter and that removes
+    // the first n values from the list of integers.
+    public void removeFront(int n) {
+        checkCapacity(n);
+        int count = 0;
+        for (int i = n; i < size; i++) {
+            elementData[count] = elementData[i];
+            count++;
+        }
+        size -= n;
+    }
+
+    // Exercise 13:
+    // Write a method removeAll that accepts an integer value as a parameter and that removes all
+    // occurrences of the given value from the list.
+    public void removeAll(int value) {
+        int index = 0;
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (elementData[i] != value) {
+                elementData[index] = elementData[i];
+                index++;
+            }
+            if (elementData[i] == value) {
+                count++;
+            }
+        }
+        size -= count;
+    }
+
+    // Exercise 14:
+    // Write a method called printInversions that lists all inversions in a list of integers. An
+    // inversion is a pair of numbers in which the first appears before the second in the list
+    // but the first is greater than the second.
+    public void printInversions() {
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
+                if (elementData[i] > elementData[j]) {
+                    System.out.println("(" + elementData[i] + ", " + elementData[j] + ")");
+                }
+            }
+        }
+    }
+
+    // Exercise 15:
+    // Write a method called mirror that doubles the size of a list by appending the mirror image
+    // of the original sequence to the end of the list.
+    public void mirror() {
+        checkCapacity(size * 2);
+        int index = size;
+        size *= 2;
+        for (int i = index; i < size; i++) {
+            elementData[i] = elementData[index-1];
+            index--;
+        }
+    }
+
+    // Exercise 16:
+    // Write a method called stutter that replaces every value with two of that value.
+    public void stutter() {
+        checkCapacity(size * 2);
+        int index = size;
+        size *= 2;
+        for (int i = size - 1; i >= 1; i-=2) {
+            elementData[i] = elementData[index - 1];
+            elementData[i-1] = elementData[index - 1];
+            index--;
+        }
+    }
+
+    // Exercise 17:
+    // Write a method called stretch that takes an integer n as a parameter and that increases a
+    // list of integers
 }
