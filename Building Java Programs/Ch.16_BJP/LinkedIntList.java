@@ -1,6 +1,8 @@
 // Example included in the textbook that will include exercises
 // Class LinkedIntList can be used to store a list of integers.
 
+import java.util.NoSuchElementException;
+
 public class LinkedIntList {
     private ListNode front; // first value in the list
 
@@ -100,5 +102,161 @@ public class LinkedIntList {
             current = current.next;
         }
         return current;
+    }
+
+    // Exercise 1:
+    // Write a method called set that accepts an index and a value and sets the list's elements
+    // at that index to have the given value.
+    public void set(int index, int value) {
+        ListNode current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        current.data = value;
+    }
+
+    // Exercise 2:
+    // Write a method called min that returns the minimum value in a list of integers. If the list
+    // is empty, it should throw a NoSuchElementException.
+    public int min() {
+        if (size() == 0) {
+            throw new NoSuchElementException();
+        }
+        ListNode current = front;
+        int min = Integer.MAX_VALUE;
+        while (current != null) {
+            if (current.data < min) {
+                min = current.data;
+            }
+            current = current.next;
+        }
+        return min;
+    }
+
+    // Exercise 3:
+    // Write a method called isSorted that returns truw if the list is in sorted order and returns
+    // false otherwise. An empty list is considered to be sorted
+    public boolean isSorted() {
+        if (size() == 0) {
+            return true;
+        }
+        ListNode current = front;
+        ListNode nextNode = front;
+        while (nextNode != null) {
+            nextNode = nextNode.next;
+            if (nextNode.data < current.data) {
+                return false;
+            }
+            current = current.next;
+        }
+        return true;
+    }
+
+    // Exercise 4:
+    // Write a method called lastIndexOf that accepts an integer value as a parameter and that
+    // returns the index in the list of the last occurrence of that value, or -1 if the value
+    // is not found in the list.
+    public int lastIndexOf(int value) {
+        if (size() == 0) {
+            return -1;
+        }
+        ListNode current = front;
+        int index = -1;
+        int count = 0;
+        while (current != null) {
+            if (current.data == value) {
+                index = count;
+            }
+            current = current.next;
+            count++;
+        }
+        return index;
+    }
+
+    // Exercise 5:
+    // Write a method called countDuplicates that returns the number of duplicates in a sorted
+    // list. The list will be in sorted order, so all of the duplicates will be grouped together.
+    public int countDuplicates() {
+        if (size() == 0) {
+            return 0;
+        }
+        ListNode current = front;
+        ListNode nextNode = front;
+        int count = 0;
+        while (nextNode != null) {
+            nextNode = nextNode.next;
+            if (current.data == nextNode.data) {
+                count++;
+            }
+            current = current.next;
+        }
+        return count;
+    }
+
+    // Exercise 6:
+    // Write a method called hasTwoConsecutive that returns whether or not a list of integers
+    // has two adjacent numbers that are consecutive integers(true if such a pair exists
+    // and false otherwise).
+    public boolean hasTwoConsecutive() {
+        if (size() == 0) {
+            return false;
+        }
+        ListNode current = front;
+        ListNode nextNode = front;
+        while (nextNode != null) {
+            nextNode = nextNode.next;
+            if (current.data + 1 == nextNode.data) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    // Exercise 7:
+    // Write a method called deleteBack that deletes the last value(the value at the back of
+    // the list) and returns the deleted value. If the list is empty throw NoSuchElementException
+    public int deleteBack() {
+        if (size() == 0) {
+            throw new NoSuchElementException();
+        }
+        ListNode current = front;
+        while (current.next != null) {
+            current = current.next;
+        }
+        int value = current.data;
+        current = null;
+        return value;
+    }
+
+    // Exercise 8:
+    // Write a method called switchPairs that switches the order of the values in the list in a
+    // pairwise fashion. Your method should switch the order of the first two values, then switch
+    // the order of the next two values, and so on.
+    public void switchPairs() {
+        if (size() == 0 || size() == 1) {
+            return;
+        }
+        ListNode current = front;
+        ListNode nextNode = front;
+        if (nextNode.next != null) {
+            nextNode = nextNode.next;
+        }
+        while (nextNode != null) {
+            int temp = current.data;
+            current.data = nextNode.data;
+            nextNode.data = temp;
+            current = current.next.next;
+            nextNode = nextNode.next.next;
+        }
+    }
+
+    // Exercise 9:
+    // Write a method called stutter that doubles the size of a list by replacing every integer in
+    // the list with two of that integer.
+    public void stutter() {
+        if (size() == 0) {
+            return;
+        }
     }
 }
