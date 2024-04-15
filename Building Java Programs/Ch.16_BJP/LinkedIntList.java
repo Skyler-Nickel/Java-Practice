@@ -142,7 +142,7 @@ public class LinkedIntList {
         }
         ListNode current = front;
         ListNode nextNode = front;
-        while (nextNode != null) {
+        while (nextNode.next != null) {
             nextNode = nextNode.next;
             if (nextNode.data < current.data) {
                 return false;
@@ -162,7 +162,7 @@ public class LinkedIntList {
         }
         ListNode current = front;
         int index = -1;
-        int count = 0;
+        int count = 1;
         while (current != null) {
             if (current.data == value) {
                 index = count;
@@ -183,7 +183,7 @@ public class LinkedIntList {
         ListNode current = front;
         ListNode nextNode = front;
         int count = 0;
-        while (nextNode != null) {
+        while (nextNode.next != null) {
             nextNode = nextNode.next;
             if (current.data == nextNode.data) {
                 count++;
@@ -203,7 +203,7 @@ public class LinkedIntList {
         }
         ListNode current = front;
         ListNode nextNode = front;
-        while (nextNode != null) {
+        while (nextNode.next != null) {
             nextNode = nextNode.next;
             if (current.data + 1 == nextNode.data) {
                 return true;
@@ -221,11 +221,11 @@ public class LinkedIntList {
             throw new NoSuchElementException();
         }
         ListNode current = front;
-        while (current.next != null) {
+        while (current.next.next != null) {
             current = current.next;
         }
-        int value = current.data;
-        current = null;
+        int value = current.next.data;
+        current.next = null;
         return value;
     }
 
@@ -258,5 +258,78 @@ public class LinkedIntList {
         if (size() == 0) {
             return;
         }
+        ListNode current = front;
+        while (current != null) {
+            current.next = new ListNode(current.data, current.next);
+            current = current.next.next;
+        }
+    }
+
+    // Exercise 10:
+    // Write a method called stretch that takes an integer n as a parameter and that increases
+    // a list of integers by a factor of n by replacing each integer in the original list
+    // with n copies of that integer
+    public void stretch(int n) {
+        if (size() == 0) {
+            return;
+        }
+        ListNode current = front;
+        int count = 1;
+        while (current != null) {
+            if (count < n) {
+                current.next = new ListNode(current.data, current.next);
+                current = current.next;
+                count++;
+            } else {
+                current = current.next;
+                count = 1;
+            }
+        }
+    }
+
+    // Exercise 11:
+    // Write a method called compress that replaces every pair of elements in the list with a
+    // single element equal to the sum of the pair. If the list is of odd size, leave the last
+    // element unchanged.
+    public void compress() {
+        if (size() <= 1) {
+            return;
+        }
+        ListNode compressed = front;
+        ListNode nextNode = front;
+        ListNode current = front;
+        if (size() % 2 != 0) {
+            while (nextNode.next != null) {
+                nextNode = nextNode.next;
+                compressed.data = current.data + nextNode.data;
+                compressed = compressed.next;
+                nextNode = nextNode.next;
+                current = current.next.next;
+            }
+            compressed.next = null;
+            compressed.data = nextNode.data;
+        } else {
+            while (nextNode != null) {
+                nextNode = nextNode.next;
+                compressed.data = current.data + nextNode.data;
+                nextNode = nextNode.next;
+                current = current.next.next;
+                if (nextNode != null) {
+                    compressed = compressed.next;
+                }
+            }
+            compressed.next = null;
+        }
+    }
+
+    // Exercise 12:
+    // Write a method called split that rearranges the elements of a list so that all of the
+    // negative values appear before all the nonnegatives.
+    public void split() {
+        if (size() <= 1) {
+            return;
+        }
+        ListNode current = front;
+        ListNode nextNode = front;
     }
 }
