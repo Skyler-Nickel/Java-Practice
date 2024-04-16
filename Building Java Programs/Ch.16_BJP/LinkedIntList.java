@@ -404,29 +404,124 @@ public class LinkedIntList {
         if (size() == 0) {
             return new LinkedIntList();
         }
+        LinkedIntList list2 = new LinkedIntList();
         if (size() == 1) {
-            LinkedIntList list2 = new LinkedIntList();
             list2.add(front.data);
             front = null;
         }
 
-        LinkedIntList list2 = new LinkedIntList();
-        ListNode current = front;
-        ListNode nextNode = front;
-        int count = 0;
-        while (current != null) {
-            if (current == front) {
-                list2.add(current.data);
-                front = current.next;
-                current = current.next;
-                count++;
-            }
-            if (count % 2 == 0) {
-                list2.add(current.data);
-                current.next = nextNode;
-                count++;
-            }
+        ListNode current = front.next;
+        list2.add(front.data);
+        front = current;
+        while (current != null && current.next != null) {
+            ListNode temp = current.next;
+            current.next = current.next.next;
+            list2.add(temp.data);
+            current = current.next;
         }
         return list2;
+    }
+
+    // Exercise 17:
+    // Write a method called removeRange that accepts a starting and ending index as parameters
+    // and removes the elements at those indexes (inclusive) from the list
+    public void removeRange(int start, int end) {
+        if (size() == 0 || start > size() || end > size() || start < 0 || end < 0) {
+            throw new IllegalArgumentException();
+        }
+        ListNode current = front;
+        int count = 1;
+        while (current != null && current.next != null && count <= end) {
+            if (count < start) {
+                current = current.next;
+            }
+            count++;
+            if (count >= start && count <= end) {
+                current.next = current.next.next;
+            }
+        }
+    }
+
+    // Exercise 18:
+    // Write a method called doubleList that doubles the size of a list by appending a copy of
+    // the original sequence to the end of the list.
+    public void doubleList() {
+        if (size() == 0) {
+            return;
+        }
+        ListNode current = front;
+        ListNode toAppend = front;
+        int count = 0;
+        int index = 0;
+        while (current.next != null) {
+            current = current.next;
+            count++;
+        }
+        while (index <= count) {
+            current.next = new ListNode(toAppend.data, current.next);
+            index++;
+            toAppend = toAppend.next;
+            current = current.next;
+        }
+    }
+
+    // Exercise 19:
+    // Write a method called rotate that moves the value at the front of a list integers to the end.
+    public void rotate() {
+        if (size() == 0 || size() == 1) {
+            return;
+        }
+        ListNode current = front.next;
+        ListNode temp = front;
+        front = front.next;
+        while (current.next != null) {
+            current = current.next;
+        }
+        temp.next = null;
+        current.next = temp;
+    }
+
+    // Exercise 20:
+    // Write a method called shift that rearranges the elements of a list of integers by moving
+    // to the end of the list all values that are in odd-numbered positions and otherwise
+    // preserving the list order.
+    public void shift() {
+        if (size() == 0 || size() == 1) {
+            return;
+        }
+        ListNode current = front;
+        ListNode temp = front.next;
+        while (current != null && current.next != null) {
+            current.next = current.next.next;
+            current = current.next;
+        }
+    }
+
+
+    // Exercise 21:
+    // Write a method called surroundWith that takes an integer x and an integer y as parameters
+    // and surrounds all nodes in the list containing the value x with new nodes containing the 
+    // value y.
+    public void surroundWith(int x, int y) {
+        if (size() == 0) {
+            return;
+        }
+        ListNode current = front;
+        while (current != null && current.next != null) {
+            if (current == front && current.data == x) {
+                front = new ListNode(y, current);
+            }
+            if (current.next.data == x) {
+                current.next = new ListNode(y, current.next);
+                current = current.next.next;
+            }
+            if (current.data == x) {
+                current.next = new ListNode(y, current.next);
+                current = current.next;
+            }
+            if (current != null) {
+                current = current.next;
+            }
+        }
     }
 }

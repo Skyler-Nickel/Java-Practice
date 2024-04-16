@@ -19,6 +19,13 @@ public class LinkedIntListClient {
         int[] data15 = {3, 9, 4, 2, 3, 8, 17, 4, 3, 18};
         int[] data16 = {3};
         int[] data17 = {8, 13, 17, 4, 9, 12, 98, 41, 7, 23, 0, 92};
+        int[] data18 = {8, 13, 17, 4, 9, 12, 98, 41, 7, 23, 0, 92};
+        int[] data19 = {1, 3, 2, 7};
+        int[] data20 = {8, 23, 19, 7, 45, 98, 102, 4};
+        int[] data21 = {0, 1, 2, 1};
+        int[] data22 = {0, 1, 0};
+        int[] data23 = {0, 1, 2};
+        int[] data24 = {10, 31, 42, 23, 44, 75, 86};
         
 
         LinkedIntList list1 = new LinkedIntList();
@@ -38,6 +45,13 @@ public class LinkedIntListClient {
         LinkedIntList list15 = new LinkedIntList();
         LinkedIntList list16 = new LinkedIntList();
         LinkedIntList list17 = new LinkedIntList();
+        LinkedIntList list18 = new LinkedIntList();
+        LinkedIntList list19 = new LinkedIntList();
+        LinkedIntList list20 = new LinkedIntList();
+        LinkedIntList list21 = new LinkedIntList();
+        LinkedIntList list22 = new LinkedIntList();
+        LinkedIntList list23 = new LinkedIntList();
+        LinkedIntList list24 = new LinkedIntList();
 
 
         add(data1, list1);
@@ -57,6 +71,13 @@ public class LinkedIntListClient {
         add(data15, list15);
         add(data16, list16);
         add(data17, list17);
+        add(data18, list18);
+        add(data19, list19);
+        add(data20, list20);
+        add(data21, list21);
+        add(data22, list22);
+        add(data23, list23);
+        add(data24, list24);
 
 
         testSet(list1, 2, 10);
@@ -96,6 +117,18 @@ public class LinkedIntListClient {
         testRemoveAll(list16, 3);
 
         testRemoveEvens(list17);
+
+        testRemoveRange(list18, 3, 8);
+
+        testDoubleList(list19);
+
+        testRotate(list20);
+
+        testSurroundsWith(list21, 1, 4);
+        testSurroundsWith(list22, 1, 1);
+        testSurroundsWith(list23, 0, 4);
+
+        testShift(list24);
     }
 
     public static void add(int[] data, LinkedIntList list) {
@@ -209,6 +242,41 @@ public class LinkedIntListClient {
         LinkedIntList list2 = list.removeEvens();
         System.out.println("List = " + list.toString());
         System.out.println("List 2 = " + list2.toString());
+        System.out.println();
+    }
+
+    public static void testRemoveRange(LinkedIntList list, int start, int end) {
+        System.out.println("List = " + list.toString());
+        list.removeRange(start, end);
+        System.out.println("List = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testDoubleList(LinkedIntList list) {
+        System.out.println("List = " + list.toString());
+        list.doubleList();
+        System.out.println("List = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testRotate(LinkedIntList list) {
+        System.out.println("List = " + list.toString());
+        list.rotate();
+        System.out.println("List = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testSurroundsWith(LinkedIntList list, int x, int y) {
+        System.out.println("List = " + list.toString());
+        list.surroundWith(x, y);
+        System.out.println("List = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testShift(LinkedIntList list) {
+        System.out.println("List = " + list.toString());
+        list.shift();
+        System.out.println("List = " + list.toString());
         System.out.println();
     }
 }
