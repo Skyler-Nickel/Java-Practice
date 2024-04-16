@@ -78,7 +78,7 @@ public class LinkedIntList {
         if (index == 0) {
             front = new ListNode(value, front);
         } else {
-            ListNode current = nodeAt(index -1 );
+            ListNode current = nodeAt(index - 1);
             current.next = new ListNode(value, current.next);
         }
     }
@@ -326,10 +326,107 @@ public class LinkedIntList {
     // Write a method called split that rearranges the elements of a list so that all of the
     // negative values appear before all the nonnegatives.
     public void split() {
-        if (size() <= 1) {
+        ListNode current = front;
+        
+        while (current != null && current.next != null) {
+            if (current.next.data < 0) {
+                ListNode temp = current.next;
+                current.next = current.next.next;
+                temp.next = front;
+                front = temp;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    // Exercise 13:
+    // Write a method called transferFrom that accepts a second linked list as a parameter and
+    // that moves values from the second list to this list. You are to attach the second list's
+    // elements to the end of this list.
+    public void transferFrom(LinkedIntList list2) {
+        if (size() == 0 || list2.size() == 0) {
             return;
         }
         ListNode current = front;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = list2.front;
+    }
+
+    // Exercise 14:
+    // Write a method called removeAll that removes all occurrences of a particular value.
+    public void removeAll(int value) {
+        if (size() == 0) {
+            return;
+        }
+        if (size() == 1 && front.data == value) {
+            front = null;
+            return;
+        }
+        ListNode current = front;
+        while (current != null) {
+            if (front.data == value) {
+                front = front.next;
+                current = current.next;
+            }
+            if (current.next != null && current.next.data == value) {
+                current.next = current.next.next;
+            }
+            current = current.next;
+        }
+    }
+
+    // Exercise 15:
+    // Write a method called equals that accepts a second list as a parameter, returns true if the
+    // two lists are equal, and false otherwise.
+    public boolean equals(LinkedIntList list2) {
+        if (size() != list2.size()) {
+            return false;
+        }
+        ListNode thisNode = front;
+        ListNode otherNode = list2.front;
+        while (thisNode != null) {
+            if (thisNode.data != otherNode.data) {
+                return false;
+            }
+            thisNode = thisNode.next;
+            otherNode = otherNode.next;
+        }
+        return true;
+    }
+
+    // Exercise 16:
+    // Write a method called removeEvens that removes all values in even-numbered indexes from a
+    // list, returning a new list that contains those values in their original order.
+    public LinkedIntList removeEvens() {
+        if (size() == 0) {
+            return new LinkedIntList();
+        }
+        if (size() == 1) {
+            LinkedIntList list2 = new LinkedIntList();
+            list2.add(front.data);
+            front = null;
+        }
+
+        LinkedIntList list2 = new LinkedIntList();
+        ListNode current = front;
         ListNode nextNode = front;
+        int count = 0;
+        while (current != null) {
+            if (current == front) {
+                list2.add(current.data);
+                front = current.next;
+                current = current.next;
+                count++;
+            }
+            if (count % 2 == 0) {
+                list2.add(current.data);
+                current.next = nextNode;
+                count++;
+            }
+        }
+        return list2;
     }
 }
