@@ -26,6 +26,7 @@ public class LinkedIntListClient {
         int[] data22 = {0, 1, 0};
         int[] data23 = {0, 1, 2};
         int[] data24 = {10, 31, 42, 23, 44, 75, 86};
+        int[] data25 = {17, 4, 19, 8, 1};
         
 
         LinkedIntList list1 = new LinkedIntList();
@@ -52,6 +53,7 @@ public class LinkedIntListClient {
         LinkedIntList list22 = new LinkedIntList();
         LinkedIntList list23 = new LinkedIntList();
         LinkedIntList list24 = new LinkedIntList();
+        LinkedIntList list25 = new LinkedIntList();
 
 
         add(data1, list1);
@@ -78,6 +80,7 @@ public class LinkedIntListClient {
         add(data22, list22);
         add(data23, list23);
         add(data24, list24);
+        add(data25, list25);
 
 
         testSet(list1, 2, 10);
@@ -129,6 +132,8 @@ public class LinkedIntListClient {
         testSurroundsWith(list23, 0, 4);
 
         testShift(list24);
+
+        testReverse(list25);
     }
 
     public static void add(int[] data, LinkedIntList list) {
@@ -276,6 +281,13 @@ public class LinkedIntListClient {
     public static void testShift(LinkedIntList list) {
         System.out.println("List = " + list.toString());
         list.shift();
+        System.out.println("List = " + list.toString());
+        System.out.println();
+    }
+
+    public static void testReverse(LinkedIntList list) {
+        System.out.println("List = " + list.toString());
+        list.reverse();
         System.out.println("List = " + list.toString());
         System.out.println();
     }

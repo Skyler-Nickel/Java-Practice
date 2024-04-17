@@ -490,11 +490,33 @@ public class LinkedIntList {
             return;
         }
         ListNode current = front;
-        ListNode temp = front.next;
+        ListNode temp1 = front.next;
+        ListNode temp2 = null;
+        ListNode temp3 = null;
+        int count = 0;
         while (current != null && current.next != null) {
             current.next = current.next.next;
             current = current.next;
+            if (current.next != null) {
+                temp3 = current.next;
+            }
+            if (temp2 != null) {
+                if (temp3 != null && count > 1) {
+                    temp2.next = temp3;
+                    temp2 = temp3;
+                }
+                if (count == 1) {
+                    temp1.next = temp2;
+                }
+            }
+            if (count == 0) {
+                temp2 = current.next;
+            }
+            count++;
         }
+        temp2.next = temp3;
+        temp3.next = null;
+        current.next = temp1;   
     }
 
 
@@ -523,5 +545,22 @@ public class LinkedIntList {
                 current = current.next;
             }
         }
+    }
+
+    // Exercise 22:
+    // Write a methods called reverse that reverses the order of the elements in the list
+    public void reverse() {
+        if (size() == 0 || size() == 1) {
+            return;
+        }
+        ListNode current = front;
+        ListNode previous = null;
+        while (current != null) {
+            ListNode nextN = current.next;
+            current.next = previous;
+            previous = current;
+            current = nextN;
+        }
+        front = previous;
     }
 }
