@@ -276,5 +276,58 @@ public class IntTree {
     // For a branch node, it should return a parenthesized String that has three elements
     // separated by commas: the data at the root, a string representation of the left subtree,
     // and then a string representation of the right subtree.
+    public String toString2() {
+        return toString2(overallRoot);
+    }
     
+    private String toString2(IntTreeNode root) {
+        if (root == null) {
+            return "empty";
+        } else if (root.left == null && root.right == null) {
+            return String.valueOf(root.data);
+        } else {
+            return "(" + root.data + ", " + toString2(root.left) + ", " + toString2(root.right) + ")";
+        }
+    }
+
+    // Exercise 9:
+    // Write a method called equals that accepts another binary tree of integers as a parameter
+    // and compares the two trees to see whether they are equal to each other.
+    public boolean equals(IntTree tree2) {
+        return equals(overallRoot, tree2.overallRoot);
+    }
+    
+    private boolean equals(IntTreeNode root, IntTreeNode root2) {
+        if (root == null && root2 == null) {
+            return true;
+        } else if (root.left.data != root2.left.data || root.right.data != root2.right.data) {
+            return false;
+        } else if (root.left == root2.left && root.right == root2.right) {
+            return equals(root.left, root2.left) && equals(root.right, root2.right);
+        }
+        return true;
+    }
+
+    // Exercise 10:
+    // Write a method called doublePositives that doubles all data values greater than 0 in
+    // a binary tree of integers.
+    public int doublePositives() {
+        return doublePositives(overallRoot);
+    }
+    
+    private int doublePositives(IntTreeNode root) {
+        if (root == null) {
+            return 0;
+        } else if (root != null && root.data > 0) {
+            root.data = 2 * root.data;
+            return doublePositives(root.left) + doublePositives(root.right);
+        } else {
+            return doublePositives(root.left) + doublePositives(root.right);
+        }
+    }
+
+    // Exercise 11:
+    // Write a method called numberNodes that changes the data stored in a binary tree, assigning
+    // sequential integers starting with 1 to each node so that a preorder traversal will produce
+    // the numbers in order (1, 2, 3, etc.).
 }
