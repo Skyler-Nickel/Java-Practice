@@ -330,4 +330,57 @@ public class IntTree {
     // Write a method called numberNodes that changes the data stored in a binary tree, assigning
     // sequential integers starting with 1 to each node so that a preorder traversal will produce
     // the numbers in order (1, 2, 3, etc.).
+    public int numberNodes() {
+        return numberNodes(overallRoot, 1);
+    }
+        
+    private int numberNodes(IntTreeNode root, int value) {
+        if (root == null) {
+            return 0;
+        }
+        root.data = value;
+        int valueLeft = numberNodes(root.left, value + 1);
+        int valueRight = numberNodes(root.right, value + valueLeft + 1);
+        return 1 + valueLeft + valueRight;
+    }
+
+    // Exercise 12:
+    // Write a method called removeLeaves that removes the leaves from a tree. A leaf is a node
+    // that has empty left and right subtree.
+    public void removeLeaves() {
+        overallRoot = removeLeaves(overallRoot);
+    }
+    
+    private IntTreeNode removeLeaves(IntTreeNode root) {
+        if (root == null) {
+            return null;
+        } else if (root.left == null && root.right == null) {
+            return null;
+        }
+        root.left = removeLeaves(root.left);
+        root.right = removeLeaves(root.right);
+        return root;
+    }
+
+    // Exercise 13:
+    // Write a method called copy that returns a reference to a new IntTree that is an independent
+    // copy of the original tree.
+    public IntTreeNode copy() {
+        return copy(overallRoot);
+    }
+
+    private IntTreeNode copy(IntTreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        IntTreeNode node = new IntTreeNode(root.data, null, null);
+        node.left = copy(root.left);
+        node.right = copy(root.right);
+        return node; 
+    }
+
+    // Exercise 14:
+    // Write a method called completeToLevel that accepts an integer n as a parameter and that adds
+    // nodes to a tree to complete the first n levels. A level is complete if every possible node
+    // node at level is not null.
 }
