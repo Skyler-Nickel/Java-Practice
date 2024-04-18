@@ -148,7 +148,18 @@ Chapter 16 covers topics such as:
 Program exercises cover implementing a Linked List class.
 
 ## Chapter 17
-- Will include once finished...
+Chapter 17 covers topics such as:
+- Binary Tree Basics (Node and Tree classes)
+- Tree Traversals
+- Common Tree Operations (Sum of a Tree, Counting Levels, Counting Leaves)
+- Binary Search Tree (Properties, Building, Searching)
+- SearchTree<E>
+
+Program exercises include implementing Binary Tree class.
 
 ## Chapter 18
-- Will include once finished...
+Chapter 18 covers topics such as:
+- Hashing (Array Set Implementations, Hashing functions, Hash Map Implementation)
+- Priority Queues and Heaps (Heap Sort, Adding, Removing, Array Heap)
+
+Program exercises include implementing Hash Map class.
